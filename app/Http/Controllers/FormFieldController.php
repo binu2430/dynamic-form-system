@@ -17,7 +17,7 @@ class FormFieldController extends Controller
     }
 
     public function store(Request $request, Form $form)
-    {
+    { 
         $validated = $request->validate([
             'label' => 'required|string|max:255',
             'name' => 'required|string|max:255|regex:/^[a-zA-Z_]+$/',
@@ -34,7 +34,6 @@ class FormFieldController extends Controller
         } else {
             $validated['options'] = null;
         }
-
         $form->fields()->create($validated);
 
         return redirect()->route('forms.edit', $form)->with('success', 'Field added successfully!');
@@ -49,7 +48,7 @@ class FormFieldController extends Controller
     }
 
     public function update(Request $request, Form $form, FormField $field)
-    {
+    {//dd($request);
         $validated = $request->validate([
             'label' => 'required|string|max:255',
             'type' => 'required|string|in:text,number,date,select,email,tel,textarea',

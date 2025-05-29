@@ -32,8 +32,10 @@
             </select>
         </div>
         <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="is_required" name="is_required" {{ $field->is_required ? 'checked' : '' }}>
-            <label class="form-check-label" for="is_required">Required</label>
+        <input type="hidden" name="is_required" value="0">
+
+            <input type="checkbox" class="form-check-input" id="is_required" name="is_required" value="1" {{ $field->is_required ? 'checked' : '' }} >
+            <label class="form-check-label" for="is_required" >Required</label>
         </div>
         <div class="mb-3">
             <label for="order" class="form-label">Order</label>

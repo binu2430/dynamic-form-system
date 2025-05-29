@@ -35,7 +35,7 @@
             </select>
         </div>
         <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="is_required" name="is_required">
+            <input type="checkbox" class="form-check-input" id="is_required" name="is_required" value="1">
             <label class="form-check-label" for="is_required">Required</label>
         </div>
         <div class="mb-3">
