@@ -11,8 +11,30 @@
         <div class="container">
             <a class="navbar-brand" >Dynamic Form System</a>
             <div class="navbar-nav">
-                <a class="nav-link" href="{{ route('forms.index') }}">Manage Forms</a>
-            </div>
+            <div class="navbar-nav ms-auto d-flex flex-row align-items-center gap-3">
+            @auth
+
+    <a class="btn btn-success" href="{{ route('forms.index') }}">Manage Forms</a>
+    @endauth
+
+
+    @guest
+        <a class="nav-link" href="{{ route('login') }}">Login</a>
+        @if (Route::has('register'))
+            <a class="nav-link" href="{{ route('register') }}">Register</a>
+        @endif
+    @else
+        <span class="nav-link">{{ Auth::user()->name }}</span>
+        <a class="nav-link" href="{{ route('logout') }}"
+           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            Logout
+        </a>
+
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form>
+    @endguest
+</div>            </div>
         </div>
     </nav>
 

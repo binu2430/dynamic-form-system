@@ -10,7 +10,10 @@ class FormController extends Controller
 {
     public function index()
     {
-        $forms = Form::with('fields')->get();
+        $forms = auth()->user()->forms()
+        ->withCount('fields')
+        ->latest()
+        ->get();
         return view('forms.index', compact('forms'));
     }
 
@@ -27,7 +30,7 @@ class FormController extends Controller
             'country_code' => 'required|string|max:2',
         ]);
 
-        $form = Form::create($validated);
+        $form = $request->user()->forms()->create($validated);
 
         return redirect()->route('forms.index')->with('success', 'Form created successfully!');
     }

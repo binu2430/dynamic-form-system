@@ -45,4 +45,17 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function forms()
+    {
+        return $this->hasMany(Form::class);
+    }
+
+    /**
+     * Get all form submissions by this user
+     */
+    public function formSubmissions()
+    {
+        return $this->hasMany(UserFormData::class);
+    }
 }
