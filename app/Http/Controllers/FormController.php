@@ -126,7 +126,8 @@ public function submit(Request $request, Form $form)
         'data' => $validatedData,
         'field_snapshot' => $fieldSnapshot // This was missing
     ]);
+    return redirect()->route('forms.edit', $form)->with('success', 'Form submitted successfully!');
 
-    return redirect()->back()->with('success', 'Form submitted successfully!');
+    //return redirect()->back()->with('success', 'Form submitted successfully!');
 }
 }
